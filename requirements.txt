@@ -1,0 +1,7 @@
+lifelines==0.30.0
+numpy==2.3.0
+optuna==3.6.1
+pandas==1.5.3
+scikit_learn==1.7.0
+scikit_survival==0.23.1
+torch==2.6.0+cu124
