@@ -40,14 +40,6 @@ def load_data(csv_path):
             mode_value = df[col].mode()[0]
             df[col].fillna(mode_value, inplace=True)
 
-    # TODO：
-    # The original intention here was to use masking (MASK) with zero-padding
-    # and predict the missing values using LSTM.
-    # Missing values include both natural missingness and padding-related missingness.
-    # However, the model currently doesn't handle true missingness well,
-    # so we fill missing values first to ensure training runs smoothly.
-    # In the future, imputation via LSTM should be incorporated as initially planned.
-
     # Detect and encode string categorical variables
     categorical_cols = []
     label_encoders = {}
