@@ -49,12 +49,6 @@ def load_data(csv_path):
             mode_value = df[col].mode()[0]
             df[col].fillna(mode_value, inplace=True)
 
-    # TODO：
-    # The original plan was to use LSTM to impute missing values (including natural missingness
-    # and padding-induced missingness). However, current model does not support raw missing NaNs.
-    # So median/mode imputation is used here to ensure model runs.
-    # Future work should add LSTM-based imputation.
-
     # Detect and encode string categorical features
     categorical_cols = []
     label_encoders = {}
