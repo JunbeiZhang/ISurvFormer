@@ -2,8 +2,6 @@
 
 **ISurvFormer** is a dynamic survival analysis framework designed for longitudinal data. It utilizes predictive imputation via time-series regression to align irregular longitudinal sequences into a regular format and imputes missing values introduced by alignment. The resulting sequences are then fed into a Transformer encoder to predict survival risk.
 
-In addition, we propose **ISurvFormer-C**, an extension of ISurvFormer that incorporates latent subgroup discovery via soft clustering, enabling interpretable personalized survival modeling for heterogeneous populations.
-
 <div align="center">
   <img src="figure/ISurvFormer.png" alt="Model Architecture" width="500">
 </div>
@@ -15,7 +13,7 @@ In addition, we propose **ISurvFormer-C**, an extension of ISurvFormer that inco
 ```
 
 ├── data/                       # Raw input data (CSV format)
-├── ISurvFormer/ or ISurvFormer-C/
+├── ISurvFormer/
 │   ├── result/                 # Output files: models, logs, clustering results
 │   ├── model.py                # Core model definitions
 │   ├── data_load.py            # Data loading and preprocessing utilities
@@ -90,5 +88,6 @@ If you find this work helpful in your research, please consider citing:
   year={2025},
 }
 ```
+
 
 
