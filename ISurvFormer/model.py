@@ -20,12 +20,11 @@ class ColumnwiseImputer(nn.Module):
             other_idx = [i for i in range(D) if i != d]
             x_input = x_raw[:, :, other_idx].clone()  # [B,T,D-1]
 
-            # 屏蔽 padding
+            # mask padding
             x_input[~mask_pad.unsqueeze(-1).expand(-1, -1, len(other_idx))] = 0
 
-            # 屏蔽“其他列”的缺失，防信息泄露
             if mask_raw is not None:
-                mask_other = mask_raw[:, :, other_idx]  # True=观测
+                mask_other = mask_raw[:, :, other_idx]  
                 x_input[~mask_other] = 0
 
             h, _ = self.imputers[d](x_input)
@@ -101,12 +100,6 @@ class DynamicSurvTransformer(nn.Module):
         self.tte_head = nn.Linear(d_model, 1)
 
     def forward(self, x_raw, mask_raw, t, mask_pad):
-        """
-        x_raw: [B, T, D] 原始输入（0填充缺失值）
-        mask_raw: [B, T, D] 缺失值掩码（1=观测，0=缺失）
-        t: [B, T, 1] 时间戳
-        mask_pad: [B, T] pad 掩码（时间维度上的）
-        """
         x_filled = self.imputer(x_raw, mask_pad, mask_raw=mask_raw)
 
         x_embed = self.input_mlp(x_filled)
@@ -120,7 +113,7 @@ class DynamicSurvTransformer(nn.Module):
         tte_seq = self.tte_head(h_seq).squeeze(-1)
         
 
-        return h_seq, risk_seq, tte_seq, x_filled  # 多返回一个 x_filled
+        return h_seq, risk_seq, tte_seq, x_filled  
 
 
 
@@ -194,8 +187,6 @@ def dynamic_survival_loss_with_imputation(
     # === Total ===
     return loss_cox + alpha * loss_tte + beta * loss_impute
 
-
-
 def generate_mask(lengths, max_len=None):
     B = lengths.size(0)
     if max_len is None:
@@ -216,3 +207,4 @@ def dynamic_cindex(risk_seq, durations, events, lengths):
                                  events[mask_t].cpu().numpy())
         cindex_list.append(cidx)
     return cindex_list
+
