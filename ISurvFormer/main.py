@@ -30,8 +30,8 @@ SAVE_ROOT = os.getenv("ISURV_SAVE_DIR", "ISurvFormer/result")
 DATA_NAME_FOR_PATH = DATA_NAME.lower()
 DATA_PATH = f"data/{DATA_NAME_FOR_PATH}.csv"
 PARAM_PATH = os.path.join(SAVE_ROOT, DATA_NAME, "params.json")
-CV_RESULT_PATH = os.path.join(SAVE_ROOT, DATA_NAME, "final_cv_result.txt")
-IBS_RESULT_PATH = os.path.join(SAVE_ROOT, DATA_NAME, "ibs_cv_result.txt")
+CV_RESULT_PATH = os.path.join(SAVE_ROOT, DATA_NAME, "cindex_result.txt")
+IBS_RESULT_PATH = os.path.join(SAVE_ROOT, DATA_NAME, "ibs_result.txt")
 MODEL_SAVE_DIR = os.path.join(SAVE_ROOT, "saved_models", DATA_NAME)
 
 os.makedirs(os.path.dirname(PARAM_PATH), exist_ok=True)
@@ -40,11 +40,11 @@ os.makedirs(MODEL_SAVE_DIR, exist_ok=True)
 
 # === Step 1: Data Loading & Preprocessing ===
 print("📦 Loading data...")
-x_all, time_all, lengths_all, duration_all, event_all, D, mask_pad = load_data(DATA_PATH)
+x_all, time_all, lengths_all, duration_all, event_all, D, mask_pad, mask_raw_all = load_data(DATA_PATH)
 
-# Construct raw mask and backup true input
+# Backup true input
 x_true = x_all.clone()
-mask_raw = ~torch.isnan(x_all)
+mask_raw = mask_raw_all
 x_all = x_all.clone()
 x_all[~mask_raw] = 0.0
 
