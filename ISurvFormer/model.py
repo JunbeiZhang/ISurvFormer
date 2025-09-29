@@ -193,18 +193,3 @@ def generate_mask(lengths, max_len=None):
         max_len = lengths.max().item()
     idxs = torch.arange(max_len).expand(B, max_len).to(lengths.device)
     return idxs < lengths.unsqueeze(1)
-
-
-def dynamic_cindex(risk_seq, durations, events, lengths):
-    B, L = risk_seq.shape
-    cindex_list = []
-    for t in range(L):
-        mask_t = (torch.arange(L).to(lengths.device)[t] < lengths) & (events == 1)
-        if mask_t.sum() < 2:
-            continue
-        cidx = concordance_index(durations[mask_t].cpu().numpy(),
-                                 -risk_seq[mask_t, t].detach().cpu().numpy(),
-                                 events[mask_t].cpu().numpy())
-        cindex_list.append(cidx)
-    return cindex_list
-
