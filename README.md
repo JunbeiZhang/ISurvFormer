@@ -56,22 +56,7 @@ python run.py --data AIDS
 ```
 
 This will automatically load the dataset, perform hyperparameter tuning, and run cross-validation.
-
----
-
-## Results
-
-### Concordance Index (C-index)
-
-<div align="center">
-  <img src="figure/real_c-index_barplot.png" alt="C-index" width="500">
-</div>
-
-### Integrated Brier Score (IBS)
-
-<div align="center">
-  <img src="figure/real_ibs_barplot.png" alt="IBS" width="500">
-</div>
+The data acquisition methods are provided in the Availability of data and materials section of the paper.
 
 ---
 
@@ -87,6 +72,7 @@ If you find this work helpful in your research, please consider citing:
   year={2025},
 }
 ```
+
 
 
 
