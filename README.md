@@ -12,7 +12,6 @@
 
 ```
 
-├── data/                       # Raw input data (CSV format)
 ├── ISurvFormer/
 │   ├── result/                 # Output files: models, logs, clustering results
 │   ├── model.py                # Core model definitions
@@ -88,6 +87,7 @@ If you find this work helpful in your research, please consider citing:
   year={2025},
 }
 ```
+
 
 
 
