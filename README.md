@@ -52,7 +52,7 @@ This project requires `Python >= 3.11`.
 Minimal working example:
 
 ```bash
-python run.py --data AIDS
+python run.py --data your_data_name
 ```
 
 This will automatically load the dataset, perform hyperparameter tuning, and run cross-validation.
@@ -72,6 +72,7 @@ If you find this work helpful in your research, please consider citing:
   year={2025},
 }
 ```
+
 
 
 
