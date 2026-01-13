@@ -15,8 +15,8 @@
 ├── ISurvFormer/
 │   ├── result/                 # Output files: models, logs, clustering results
 │   ├── model.py                # Core model definitions
-│   ├── data_load.py            # Data loading and preprocessing utilities
-│   ├── hyper_search.py         # Optuna-based hyperparameter optimization
+│   ├── dataset.py            # Data loading and preprocessing utilities
+│   ├── tuning.py         # Optuna-based hyperparameter optimization
 │   ├── utils.py                # Training and evaluation utilities
 │   ├── main.py                 # Full training pipeline including CV, clustering
 │   ├── run.py                  # Quick-start script (single-line entry point)
@@ -68,10 +68,11 @@ If you find this work helpful in your research, please consider citing:
 @article{zhang2025isurvformer,
   title={ISurvFormer: A Transformer-based Dynamic Survival Model with Time-series Predictive Imputation for Longitudinal Data},
   author={Zhang, Junbei and Zhao, Xuejing},
-  journal={ },
+  journal = {Artificial Intelligence in Medicine (under review)},
   year={2025},
 }
 ```
+
 
 
 
