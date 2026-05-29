@@ -68,7 +68,7 @@ If you find this work helpful in your research, please consider citing:
 @article{zhang2025isurvformer,
   title={ISurvFormer: A Transformer-based Dynamic Survival Model with Time-series Predictive Imputation for Longitudinal Data},
   author={Zhang, Junbei and Zhao, Xuejing},
-  journal = {Artificial Intelligence in Medicine (under review)},
+  journal = {under review},
   year={2025},
 }
 ```
